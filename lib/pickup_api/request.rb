@@ -7,7 +7,7 @@ module PickupApi
     OPERATIONS = %i(get_parcelshop_list_xml push_orders_xml
                     get_orders_history_xml get_orders_list_xml)
 
-    def initialize(action, params)
+    def initialize(action, params = {})
       @action = action
       @orders = params[:orders]
       @start_date = params[:start_date] || Date.today.to_s

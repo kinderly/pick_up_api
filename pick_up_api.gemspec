@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'savon'
   s.add_dependency 'nokogiri'
+  s.add_dependency 'nori'
 end
