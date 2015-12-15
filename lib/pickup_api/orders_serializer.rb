@@ -2,8 +2,8 @@ module PickupApi
   class OrdersSerializer
     class << self
       def to_xml(*orders)
-        builder = Nokogiri::XML::Builder.new do |xml|
-          xml.OrdersList {
+        Nokogiri::XML::Builder.new do |xml|
+          xml.OrdersList do
             orders.each do |order|
               order.items.each do |item|
                 xml.OrderData(
@@ -23,7 +23,7 @@ module PickupApi
                 )
               end
             end
-          }
+          end
         end.to_xml
       end
     end

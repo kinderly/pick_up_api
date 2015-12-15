@@ -12,7 +12,7 @@ module PickupApi
 
     def send_order(order)
       xml_order = OrdersSerializer.to_xml(order)
-      request = Request.new(:push_orders_xml, { orders: xml_order })
+      request = Request.new(:push_orders_xml, orders: xml_order)
       response = request.result
       doc = Nokogiri::XML(response.body[:push_orders_xml_response][:return])
       if doc.at('result')['status'] == 'Загружено'

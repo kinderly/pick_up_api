@@ -11,4 +11,3 @@ module PickupApi
   require 'savon'
   require 'nori'
 end
-

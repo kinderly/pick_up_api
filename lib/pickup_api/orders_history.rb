@@ -42,7 +42,7 @@ module PickupApi
       list = response.body[:get_orders_history_xml_response][:return]
       parser = Nori.new
       doc = Nokogiri::XML(list)
-      res = doc.at('Orderhistory').children.to_a.reject do |item|
+      doc.at('Orderhistory').children.to_a.reject do |item|
         item.is_a? Nokogiri::XML::Text
       end.map(&:to_s).map { |item| parser.parse(item) }.map(&:values).flatten
     end
