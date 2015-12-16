@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = 'pick_up_api'
+  s.name = 'pickup_api'
   s.version = '0.1'
   s.authors = ['Kinderly LTD']
   s.email = 'pustserg@yandex.ru'
