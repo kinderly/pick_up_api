@@ -1,6 +1,6 @@
 module PickupApi
   class Request
-    URL = 'http://185.22.234.24/pickup_test/ws/pickupexchange.1cws?wsdl'
+    URL = ENV['pickup_api_url']
     LOGIN = ENV['pickup_login']
     PASSWORD = ENV['pickup_password']
     AUTH_CODE = ENV['pickup_auth_code']
