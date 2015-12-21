@@ -1,9 +1,5 @@
 module PickupApi
   class Request
-    URL = ENV['pickup_api_url']
-    LOGIN = ENV['pickup_login']
-    PASSWORD = ENV['pickup_password']
-    AUTH_CODE = ENV['pickup_auth_code']
     OPERATIONS = %i(get_parcelshop_list_xml push_orders_xml
                     get_orders_history_xml get_orders_list_xml)
 
@@ -14,7 +10,10 @@ module PickupApi
       @end_date = params[:end_date]
       @order_number = params[:order_number].to_s
       @format = params[:format] || 'XML'
-      @client = Savon.client(wsdl: URL, basic_auth: [LOGIN, PASSWORD])
+      @url = ENV['pickup_api_url']
+      @login = ENV['pickup_login']
+      @password = ENV['pickup_password']
+      @auth_code = ENV['pickup_auth_code']
     end
 
     def result
@@ -26,18 +25,19 @@ module PickupApi
         message = {}
       when :push_orders_xml
         message = {
-          'AuthorizationCode' => AUTH_CODE,
+          'AuthorizationCode' => @auth_code,
           'Orders' => @orders
         }
       else
         message = {
-          'AuthorizationCode' => AUTH_CODE,
+          'AuthorizationCode' => @auth_code,
           'StartDate' => @start_date,
           'EndDate' => @end_date,
           'OrderNr' => @order_number,
           'Format' => @format
         }
       end
+      @client = Savon.client(wsdl: @url, basic_auth: [@login, @password])
       @client.call(@action, message: message)
     end
   end

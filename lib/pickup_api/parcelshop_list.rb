@@ -1,7 +1,6 @@
 module PickupApi
   class ParcelshopList
     def list
-
       # [{
       #   "Parcelshop"=>
       #   {
