@@ -15,11 +15,15 @@ module PickupApi
                   CustomerPhone: order.customer_phone,
                   Item: item.title,
                   ItemCode: item.code,
+                  ItemType: item.type,
                   ItemBarcode: item.barcode,
                   Qty: item.quantity,
                   ItemPrice: item.price,
                   PriceToPay: item.to_pay,
-                  Comment: order.comment
+                  Comment: order.comment,
+                  OrderBarcode: order.barcode,
+                  Invoice: order.invoice,
+                  Seller: order.seller
                 )
               end
             end
