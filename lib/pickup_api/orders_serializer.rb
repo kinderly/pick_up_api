@@ -21,7 +21,7 @@ module PickupApi
                   ItemPrice: item.price,
                   PriceToPay: item.to_pay,
                   Comment: order.comment,
-                  OrderBarcode: order.barcode,
+                  OrderBarcode: order.order_barcode,
                   Invoice: order.invoice,
                   Seller: order.seller
                 )
